@@ -1,0 +1,29 @@
+{
+  "services": [
+    {
+      "name": "tuwunel",
+      "image": "ghcr.io/matrix-construct/tuwunel:latest",
+      "isMain": true,
+      "internalPort": 6167,
+      "ports": [
+        {
+          "published": 8448,
+          "target": 6167,
+          "protocol": "tcp"
+        }
+      ],
+      "volumes": [
+        {
+          "source": "tuwunel_db",
+          "target": "/var/lib/tuwunel/",
+          "type": "volume"
+        }
+      ],
+      "env": {
+        "TUWUNEL_SERVER_NAME": "${TUWUNEL_SERVER_NAME}",
+        "TUWUNEL_ALLOW_REGISTRATION": "${TUWUNEL_ALLOW_REGISTRATION}"
+      },
+      "restart": "unless-stopped"
+    }
+  ]
+}

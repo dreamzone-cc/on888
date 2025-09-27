@@ -1,0 +1,36 @@
+{
+  "id": "tuwunel",
+  "name": "Tuwunel",
+  "available": true,
+  "version": "0.1.0",
+  "tipi_version": 4,
+  "description": "Tuwunel - Matrix homeserver proxy and federation bridge (packaged for Runtipi).",
+  "short_desc": "Matrix proxy and federation helper",
+  "author": "matrix-construct",
+  "website": "https://tuwunel.chat/",
+  "source": "https://github.com/matrix-construct/tuwunel",
+  "categories": ["communication","matrix"],
+  "port": 8448,
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["amd64","arm64"],
+  "form_fields": [
+    {
+      "id": "TUWUNEL_SERVER_NAME",
+      "type": "text",
+      "label": "Server name",
+      "default": "example.com",
+      "required": true,
+      "help": "The matrix server name (hostname) for your tuwunel instance"
+    },
+    {
+      "id": "TUWUNEL_ALLOW_REGISTRATION",
+      "type": "checkbox",
+      "label": "Allow registration",
+      "default": false,
+      "help": "Allow user registration on this instance"
+    }
+  ],
+  "created_at": 1750000000000,
+  "updated_at": 1750000000000
+}

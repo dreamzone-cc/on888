@@ -1,31 +1,31 @@
-# Example App Store Template
+# Tuwunel App Store for Runtipi
 
-This repository serves as a template for creating your own custom app store for the Runtipi platform. Use this as a starting point to create and share your own collection of applications.
+This repository contains a minimal Runtipi app store that provides a single app: Tuwunel (Matrix proxy). It follows the Runtipi `example-appstore` structure so it can be added to your Runtipi instance.
 
-## Repository Structure
+Contents:
+- apps/tuwunel - App definition for Tuwunel including `config.json`, `docker-compose.json`, and metadata.
 
-- **apps/**: Contains individual app directories
 
-  - Each app has its own folder (e.g., `whoami/`) with the following structure:
-    - `config.json`: App configuration file
-    - `docker-compose.json`: Docker setup for the app
-    - `metadata/`: Contains app visuals and descriptions
-      - `description.md`: Markdown description of the app
-      - `logo.jpg`: App logo image
+How to use
+1. Create a new GitHub repository from this folder (use "Use this template" on GitHub) or push the files to a new repo.
+2. In your Runtipi instance (v4.0.0+), go to Settings → App Stores → Add App Store and paste the URL of your repository (for example `https://github.com/<you>/tuwunel-appstore`).
+3. Click Update App Stores in Runtipi to fetch apps from your repo.
+4. Find "Tuwunel" in the apps list and click Install. Provide configuration values when prompted (e.g., `TUWUNEL_SERVER_NAME`).
 
-- **tests/**: Contains test files for the app store
+Sanity checks & verification
+- Ensure the `id` in `apps/tuwunel/config.json` matches the folder name `tuwunel`.
+- In `apps/tuwunel/docker-compose.json` the service exposes host port 8448 -> container port 6167; adjust if that conflicts with existing services.
+- After install, verify the container is running and reachable: open your browser to `https://<TUWUNEL_SERVER_NAME>:8448` or check the container logs from Runtipi.
 
-  - `apps.test.ts`: Test suite for validating apps
+Advanced notes
+- Review and customize the env vars and volume names before installing in production.
+- You can replace the image tag `ghcr.io/matrix-construct/tuwunel:latest` with a pinned tag to avoid accidental upgrades.
 
-## Getting Started
+Verification checklist
+- [ ] Push this repository to GitHub and ensure it is public or accessible to your Runtipi instance.
+- [ ] Add the repository URL in Runtipi Settings → App Stores and click Update App Stores.
+- [ ] Install the Tuwunel app and provide `TUWUNEL_SERVER_NAME` during install.
+- [ ] Confirm the service container starts and port 8448 is reachable.
 
-This repository is intended to serve as a template for creating your own app store. Follow these steps to get started:
+If anything fails: check `config.json` and `docker-compose.json` for JSON validity and ensure folder names match the `id`.
 
-1. Click the "Use this template" button to create a new repository based on this template
-2. Customize the apps or add your own app folders in the `apps/` directory
-3. Test your app store by using it with Runtipi
-
-## Documentation
-
-For detailed instructions on creating your own app store, please refer to the official guide:
-[Create Your Own App Store Guide](https://runtipi.io/docs/guides/create-your-own-app-store)
