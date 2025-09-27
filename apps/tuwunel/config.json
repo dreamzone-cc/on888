@@ -1,9 +1,10 @@
 {
+  "$schema": "../app-info-schema.json",
   "id": "tuwunel",
   "name": "Tuwunel",
   "available": true,
   "version": "0.1.0",
-  "tipi_version": 4,
+  "tipi_version": 10,
   "description": "Tuwunel - Matrix homeserver proxy and federation bridge (packaged for Runtipi).",
   "short_desc": "Matrix proxy and federation helper",
   "author": "matrix-construct",
@@ -13,24 +14,24 @@
   "port": 8448,
   "exposable": true,
   "dynamic_config": true,
+  "force_expose": true,
+  "no_gui": true,
   "supported_architectures": ["amd64","arm64"],
   "form_fields": [
     {
-      "id": "TUWUNEL_SERVER_NAME",
       "type": "text",
       "label": "Server name",
-      "default": "example.com",
+      "placeholder": "example.com",
       "required": true,
-      "help": "The matrix server name (hostname) for your tuwunel instance"
+      "env_variable": "TUWUNEL_SERVER_NAME"
     },
     {
-      "id": "TUWUNEL_ALLOW_REGISTRATION",
-      "type": "checkbox",
+      "type": "boolean",
       "label": "Allow registration",
-      "default": false,
-      "help": "Allow user registration on this instance"
+      "required": false,
+      "env_variable": "TUWUNEL_ALLOW_REGISTRATION"
     }
   ],
-  "created_at": 1750000000000,
-  "updated_at": 1750000000000
+  "created_at": 1748521776912,
+  "updated_at": 1748521776912
 }
